@@ -5,14 +5,15 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { User } from '@shared/interfaces';
+import { environment } from '@env/environment';
+import { User, Auth } from '@shared/interfaces';
 import { UsersService } from '@shared/services/users.service';
 
 @Injectable()
 export class AuthService {
-  private apiPath = '/api/login';
   private currentTokenSubject: BehaviorSubject<string>;
   private user: User;
+  private environment = environment;
 
   constructor(
     private http: HttpClient,
@@ -49,15 +50,23 @@ export class AuthService {
       }));
   }
 
-  login(data: { email: string, password: string }): Observable<void> {
-    return this.http.post(this.apiPath, data)
+  login(data: Auth): Observable<void> {
+    return this.authRequest(this.environment.signin_path, data);
+  }
+
+  registration(data: Auth): Observable<void> {
+    return this.authRequest(this.environment.signup_path, data);
+  }
+
+  private authRequest(url: string, data: Auth): Observable<void> {
+    return this.http.post(url, data)
       .pipe(map((body: any) => {
         const token = body && body.accessToken;
 
         if (token) {
           localStorage.setItem('access_token', token);
           this.currentTokenSubject.next(token);
-          this.router.navigate(['/chats']);
+          this.router.navigate([this.environment.default_route]);
         }
       }));
   }
@@ -66,6 +75,6 @@ export class AuthService {
     localStorage.removeItem('access_token');
     this.currentTokenSubject.next(null);
     this.user = null;
-    this.router.navigate(['/signin']);
+    this.router.navigate([this.environment.login_route]);
   }
 }

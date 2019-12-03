@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 
+import { environment } from '@env/environment';
 import { AuthService } from '@shared/services';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  private environment = environment;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -27,7 +30,7 @@ export class AuthGuard implements CanActivate {
             observer.complete();
           },
           () => {
-            this.router.navigate(['/signin']);
+            this.router.navigate([this.environment.login_route]);
             observer.next(false);
           }
         );
