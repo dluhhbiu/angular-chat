@@ -1,0 +1,31 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../shared/services';
+
+@Component({
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
+})
+
+export class SigninComponent implements OnInit {
+  authenticated = this.authService.authenticated;
+  email: string;
+  password: string;
+
+  constructor(
+    private authService: AuthService
+  ) { }
+
+  ngOnInit() {
+    this.email = 'a1@gmail.com';
+    this.password = 'pwd111';
+  }
+
+  login(): void {
+    const data = {
+      email: this.email,
+      password: this.password
+    };
+    this.authService.login(data).subscribe();
+  }
+}

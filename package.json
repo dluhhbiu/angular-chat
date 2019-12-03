@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "./node_modules/.bin/json-server api/db.json -m ./node_modules/json-server-auth"
+    "api": "./node_modules/.bin/json-server api/db.json -m ./node_modules/json-server-auth --routes api/routes.json"
   },
   "private": true,
   "dependencies": {

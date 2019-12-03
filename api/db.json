@@ -1,5 +1,12 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "a1@gmail.com",
+      "password": "$2a$10$kpFQkX7AL80gSoXcx2I5X.qlaAid//SJsQYkJl3NcqUYBUdojY3Dq",
+      "login": "login",
+      "id": 1
+    }
+  ],
   "chats": [],
   "messages": []
 }
