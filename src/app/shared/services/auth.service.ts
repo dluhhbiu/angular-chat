@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   private apiPath = '/api/login';
   private currentTokenSubject: BehaviorSubject<string>;
-  currentToken: Observable<string>;
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
     this.currentTokenSubject = new BehaviorSubject<string>(JSON.parse(localStorage.getItem('currentToken')));
-    this.currentToken = this.currentTokenSubject.asObservable();
   }
 
   get authenticated(): boolean {
