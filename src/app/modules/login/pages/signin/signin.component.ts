@@ -7,12 +7,12 @@ import { AuthService } from '@shared/services';
 })
 
 export class SigninComponent implements OnInit {
-  authenticated = this.authService.authenticated;
+  is_authenticated = this.authService.is_authenticated;
   email: string;
   password: string;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 import { AuthService, UsersService } from '@shared/services';
+import { AuthGuard } from '@shared/guards';
 
 @NgModule({
   declarations: [
@@ -13,11 +15,19 @@ import { AuthService, UsersService } from '@shared/services';
   imports: [
     BrowserModule,
     AppRoutes,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        }
+      }
+    }),
   ],
   providers: [
     AuthService,
     UsersService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
