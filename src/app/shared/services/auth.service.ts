@@ -4,10 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class AuthService {
   private apiPath = '/api/login';
   private currentTokenSubject: BehaviorSubject<string>;
@@ -30,7 +27,7 @@ export class AuthService {
   }
 
   login(data: { email: string, password: string }): Observable<void> {
-    return this.http.post(this.apiPath, data )
+    return this.http.post(this.apiPath, data)
       .pipe(map((body: any) => {
         const token = body && body.accessToken;
 

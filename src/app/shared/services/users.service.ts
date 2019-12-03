@@ -3,12 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '../interfaces';
+import { User } from '@shared/interfaces';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class UsersService {
   private apiPath = '/api/users';
 
@@ -16,9 +13,7 @@ export class UsersService {
 
   getUser(id: number): Observable<User> {
     return this.http.get(`${this.apiPath}`).pipe(
-      map( (user: User) => {
-        return user;
-      })
+      map((user: User) => user)
     );
   }
 }
