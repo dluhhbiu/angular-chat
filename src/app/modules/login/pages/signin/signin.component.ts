@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '@shared/services';
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthService } from '@shared/services';
 })
 
 export class SigninComponent implements OnInit {
-  is_authenticated = this.authService.is_authenticated;
+  isAuthenticated = this.authService.isAuthenticated;
   email: string;
   password: string;
 

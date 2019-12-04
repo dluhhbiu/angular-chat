@@ -1,6 +1,10 @@
 export const environment = {
   production: true,
-  signin_path: '',
-  signup_path: '',
-  users_path: '',
+  // api paths
+  signinPath: '/api/signin',
+  signupPath: '/api/signup',
+  usersPath: '/api/users',
+  // app routes
+  defaultRoute: '/chats',
+  loginRoute: '/signin',
 };

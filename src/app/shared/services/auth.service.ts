@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -24,7 +24,7 @@ export class AuthService {
     this.currentTokenSubject = new BehaviorSubject<string>(localStorage.getItem('access_token'));
   }
 
-  get is_authenticated(): boolean {
+  get isAuthenticated(): boolean {
     const token = this.currentTokenSubject.value;
     const userId = token && this.jwtHelperService.decodeToken(token).sub;
 
@@ -44,29 +44,26 @@ export class AuthService {
     }
 
     return this.usersService.getUser(userId).pipe(
-      map((user: User) => {
-        this.user = user;
-        return user;
-      }));
+      tap((user: User) => (this.user = user)));
   }
 
   login(data: Auth): Observable<void> {
-    return this.authRequest(this.environment.signin_path, data);
+    return this.authRequest(this.environment.signinPath, data);
   }
 
   registration(data: Auth): Observable<void> {
-    return this.authRequest(this.environment.signup_path, data);
+    return this.authRequest(this.environment.signupPath, data);
   }
 
   private authRequest(url: string, data: Auth): Observable<void> {
     return this.http.post(url, data)
-      .pipe(map((body: any) => {
+      .pipe(tap((body: any) => {
         const token = body && body.accessToken;
 
         if (token) {
           localStorage.setItem('access_token', token);
           this.currentTokenSubject.next(token);
-          this.router.navigate([this.environment.default_route]);
+          this.router.navigate([this.environment.defaultRoute]);
         }
       }));
   }
@@ -75,6 +72,6 @@ export class AuthService {
     localStorage.removeItem('access_token');
     this.currentTokenSubject.next(null);
     this.user = null;
-    this.router.navigate([this.environment.login_route]);
+    this.router.navigate([this.environment.loginRoute]);
   }
 }

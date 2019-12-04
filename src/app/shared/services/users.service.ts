@@ -13,8 +13,6 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUser(id: number): Observable<User> {
-    return this.http.get(`${this.environment.users_path}/${id}`).pipe(
-      map((user: User) => user)
-    );
+    return this.http.get<User>(`${this.environment.usersPath}/${id}`);
   }
 }
