@@ -32,7 +32,7 @@
 
     <div class="action-wrapper">
       <a routerLink="/signin">I've already have account</a>
-      <button mat-flat-button color="primary">Sign up</button>
+      <button mat-flat-button color="primary" [disabled]="formGroup.invalid">Sign up</button>
     </div>
   </form>
 </mat-card>

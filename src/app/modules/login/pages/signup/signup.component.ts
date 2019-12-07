@@ -34,6 +34,10 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.formGroup.invalid) {
+      return;
+    }
+
     this.authService.registration(this.formGroup.value).subscribe();
   }
 }

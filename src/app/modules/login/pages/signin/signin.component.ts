@@ -33,6 +33,10 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.formGroup.invalid) {
+      return;
+    }
+
     this.authService.login(this.formGroup.value).subscribe();
   }
 }

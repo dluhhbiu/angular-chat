@@ -1,7 +1,7 @@
 <mat-card>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email" type="email" required>
+      <input matInput placeholder="Email" formControlName="email" type="email">
       <mat-error *ngIf="f.email.errors && f.email.errors.required">
         Email is required
       </mat-error>
@@ -11,7 +11,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Password" formControlName="password" type="password" required>
+      <input matInput placeholder="Password" formControlName="password" type="password">
       <mat-error *ngIf="f.password.errors && f.password.errors.required">
         Password is required
       </mat-error>
@@ -22,7 +22,7 @@
 
     <div class="action-wrapper">
       <a routerLink="/signup">I don't have account</a>
-      <button mat-flat-button color="primary">Sign in</button>
+      <button mat-flat-button color="primary" [disabled]="formGroup.invalid">Sign in</button>
     </div>
   </form>
 </mat-card>
