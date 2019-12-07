@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '@shared/services';
 
@@ -8,24 +9,30 @@ import { AuthService } from '@shared/services';
 })
 
 export class SigninComponent implements OnInit {
-  isAuthenticated = this.authService.isAuthenticated;
-  email: string;
-  password: string;
+  formGroup: FormGroup;
 
   constructor(
     private authService: AuthService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
-    this.email = 'a1@gmail.com';
-    this.password = 'pwd111';
+    this.initForm();
   }
 
-  login(): void {
-    const data = {
-      email: this.email,
-      password: this.password
-    };
-    this.authService.login(data).subscribe();
+  // getter for easy access to form fields
+  get f() {
+    return this.formGroup.controls;
+  }
+
+  private initForm(): void {
+    this.formGroup = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  onSubmit(): void {
+    this.authService.login(this.formGroup.value).subscribe();
   }
 }

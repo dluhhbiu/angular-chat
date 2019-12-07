@@ -1,0 +1,9 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  background-color: $background;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}

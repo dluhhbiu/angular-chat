@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatCardModule,
+  MatFormFieldModule,
+  MatButtonModule,
+  MatInputModule,
+} from '@angular/material';
 
 import { SigninComponent, SignupComponent } from './pages';
 import { LoginRoutes } from './login.routes';
@@ -16,6 +22,11 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutes,
     FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
   ],
   providers: []
 })

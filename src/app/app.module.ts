@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -23,6 +24,7 @@ import { AuthGuard } from '@shared/guards';
         }
       }
     }),
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService,
