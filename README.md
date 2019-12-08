@@ -1,14 +1,22 @@
 # AngularChat
 
+Just a pet project
+
+## Used technologies
+- `Angular 8` 
+- `Angular Material 8`
+- `json-server with auth` 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
-## Development server
+## How to install
+- `git clone...`
+- `cd angular-chat`
+- `npm i`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to start server
+- start api `npm run api`
+- start the app `npm run start` and navigate to `http://localhost:4200/`
 
 ## Build
 
