@@ -1,0 +1,28 @@
+<mat-card>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" type="email" required>
+      <mat-error *ngIf="formFields.email.errors && formFields.email.errors.required">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="formFields.email.errors && formFields.email.errors.email">
+        Email must be a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" type="password" required>
+      <mat-error *ngIf="formFields.password.errors && formFields.password.errors.required">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="formFields.password.errors && formFields.password.errors.minlength">
+        Password must be at least 6 characters
+      </mat-error>
+    </mat-form-field>
+
+    <div class="action-wrapper">
+      <a routerLink="/signup">I don't have account</a>
+      <button mat-flat-button color="primary" [disabled]="formGroup.invalid">Sign in</button>
+    </div>
+  </form>
+</mat-card>

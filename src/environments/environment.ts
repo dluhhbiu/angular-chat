@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // api paths
+  signinPath: '/api/signin',
+  signupPath: '/api/signup',
+  usersPath: '/api/users',
+  // app routes
+  defaultRoute: '/chats',
+  loginRoute: '/signin',
 };
 
 /*

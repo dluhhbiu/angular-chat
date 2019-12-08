@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "./node_modules/.bin/json-server api/db.json -m ./node_modules/json-server-auth"
+    "api": "./node_modules/.bin/json-server api/db.json -m ./node_modules/json-server-auth --routes api/routes.json"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +22,9 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@auth0/angular-jwt": "^3.0.1",
+    "hammerjs": "^2.0.8",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

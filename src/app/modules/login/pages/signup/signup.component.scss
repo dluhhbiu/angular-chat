@@ -1,0 +1,14 @@
+:host {
+  width: 30%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
