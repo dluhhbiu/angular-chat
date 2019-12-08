@@ -2,30 +2,30 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email" type="email" required>
-      <mat-error *ngIf="f.email.errors && f.email.errors.required">
+      <mat-error *ngIf="formFields.email.errors && formFields.email.errors.required">
         Email is required
       </mat-error>
-      <mat-error *ngIf="f.email.errors && f.email.errors.email">
+      <mat-error *ngIf="formFields.email.errors && formFields.email.errors.email">
         Email must be a valid email address
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Login" formControlName="login" type="text" required>
-      <mat-error *ngIf="f.login.errors && f.login.errors.required">
+      <mat-error *ngIf="formFields.login.errors && formFields.login.errors.required">
         Login is required
       </mat-error>
-      <mat-error *ngIf="f.login.errors && f.login.errors.minlength">
+      <mat-error *ngIf="formFields.login.errors && formFields.login.errors.minlength">
         Login must be at least 3 characters
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Password" formControlName="password" type="password" required>
-      <mat-error *ngIf="f.password.errors && f.password.errors.required">
+      <mat-error *ngIf="formFields.password.errors && formFields.password.errors.required">
         Password is required
       </mat-error>
-      <mat-error *ngIf="f.password.errors && f.password.errors.minlength">
+      <mat-error *ngIf="formFields.password.errors && formFields.password.errors.minlength">
         Password must be at least 6 characters
       </mat-error>
     </mat-form-field>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '@shared/services';
@@ -8,20 +8,18 @@ import { AuthService } from '@shared/services';
   styleUrls: ['./signin.component.scss']
 })
 
-export class SigninComponent implements OnInit {
+export class SigninComponent {
   formGroup: FormGroup;
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.initForm();
   }
 
   // getter for easy access to form fields
-  get f() {
+  get formFields() {
     return this.formGroup.controls;
   }
 
